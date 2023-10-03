@@ -8,10 +8,27 @@ pipeline {
       }
     }
 
-    stage('test') {
-      steps {
-        echo 'Running Unit tests'
-        sh 'mvn clean test'
+    stage('Tests') {
+      parallel {
+        stage('Unit tests') {
+          steps {
+            echo 'Running Unit tests'
+            sh 'mvn clean test'
+          }
+        }
+
+        stage('Integration tests') {
+          steps {
+            sleep 5
+          }
+        }
+
+        stage('SCA') {
+          steps {
+            sleep 8
+          }
+        }
+
       }
     }
 
