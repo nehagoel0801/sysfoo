@@ -19,7 +19,7 @@ pipeline {
       steps {
         echo 'Generating .war file'
         sh 'mvn package -DskipTests'
-        archiveArtifacts 'taget/*.war'
+        archiveArtifacts 'target/*.war'
       }
     }
 
